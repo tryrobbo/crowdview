@@ -7,9 +7,13 @@
 body{background-color:whitesmoke}
 
 .container {background-color: lightsteelblue; 
-min-height:100%; }
+    margin-top: 10px;
+min-height:100%;
+    margin-bottom: 10px;
+padding-bottom: 10px;}
 
-#sharebuttons{
+.sharebuttons{
     margin-top: 10px;
     padding-top: 10px;
+    margin-bottom: 10px;
 }

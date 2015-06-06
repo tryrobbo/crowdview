@@ -30,10 +30,12 @@ var hooksObject = {after: {
     AutoForm.hooks({
   insertWatchSessionFormCustom: hooksObject
 });
-    
-    
+   
+Template.updateWatchSessionFormCustom.rendered = function(){
+        $('#shareLink').val(window.location);};
+
+
 }
-    
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
