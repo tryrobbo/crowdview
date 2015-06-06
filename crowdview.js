@@ -9,6 +9,10 @@ if (Meteor.isClient) {
   }
 })
     
+    Router.route('/', function () {
+        this.render('Home');
+    });
+    Router.route('/showall');
 }
 
 if (Meteor.isServer) {

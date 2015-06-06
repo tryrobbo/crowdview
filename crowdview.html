@@ -8,12 +8,27 @@
     <h1>Gatha.us</h1>
     <h2>Schedule your viewing</h2>
     <div class="row">
-    {{> insertWatchSessionFormCustom}}   
+
     </div>
     
-    {{> listWatchSessions}}
     </div>
 </body>
+
+<template name="Home">
+    <div class="container">
+
+    <p>This is the home template.</p>
+    {{> insertWatchSessionFormCustom}}   
+    </div>
+</template>    
+<template name="showall">
+        <div class="container">
+
+    <p>This is the show all template.</p>
+    {{> listWatchSessions}}
+    </div>
+</template>    
+
 
 
 <template name="insertWatchSessionFormCustom">
@@ -59,7 +74,7 @@
       </thead>
         {{#each WSList}}
         <tr>
-          <th scope="row"><a href="/?{{_id}}">Link</a></th>
+          <th scope="row"><a href="/WS?id={{_id}}">Link</a></th>
           <td>{{People}}</td>
           <td>{{Film}}</td>
           <td>{{Time}}</td>
