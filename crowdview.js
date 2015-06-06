@@ -37,7 +37,7 @@ WatchSessions.attachSchema(new SimpleSchema({
     label: "People"
   },
   Time: {
-    type: Date.GMT,
+    type: Date,
     label: "Time",
     min: 0
   },
