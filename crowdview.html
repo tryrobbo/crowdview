@@ -1,18 +1,18 @@
 <head>
-  <title>crowdview</title>
+  <title>Gatha.us</title>
 </head>
 
 
 <body>
 <div class="container">
    <div id="loginbuttons">{{> loginButtons}}</div>  
-    <h1>Crowdview</h1>
+    <h1>Gatha.us</h1>
     <h2>Schedule your viewing</h2>
     <div class="row">
     {{> insertWatchSessionFormCustom}}   
     </div>
     
-            {{> listWatchSessions}}
+    {{> listWatchSessions}}
     </div>
 </body>
 
@@ -48,6 +48,7 @@
 
 
 <template name="listWatchSessions">
+    <h1>Your scheduled watching sessions</h1>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -59,7 +60,7 @@
       </thead>
         {{#each WSList}}
         <tr>
-          <th scope="row">3</th>
+          <th scope="row"><a href="/?{{_id}}">Link</a></th>
           <td>{{People}}</td>
           <td>{{Film}}</td>
           <td>{{Time}}</td>
