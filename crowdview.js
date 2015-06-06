@@ -22,11 +22,11 @@ WatchSessions.attachSchema(new SimpleSchema({
     max: 200
   },
   People: {
-    type: String,
+    type: [String],
     label: "People"
   },
   Time: {
-    type: String,
+    type: Date.GMT,
     label: "Time",
     min: 0
   },

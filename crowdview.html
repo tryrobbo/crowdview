@@ -7,28 +7,11 @@
 <div class="container">
    <div id="loginbuttons">{{> loginButtons}}</div>  
     <h1>Crowdview</h1>
-    {{> insertWatchSessionFormCustom}}   
     <div class="row">
-    
-    <div class="col-md-4">
-    <h2>Who</h2>
-        <p>Who do you want to watch with?</p>
-        <template name="insertBookForm">
-        </template>
-    </div>
-    <div class="col-md-4">
-    <h2>What?</h2>
-        <p> Pick your movie!</p>
-    </div>
-    <div class="col-md-4">
-    <h2>Where?</h2>
-        <p>How are you going to watch it?</p>
+    {{> insertWatchSessionFormCustom}}   
     </div>
     
     </div>
-    </div>
-
-    
 </body>
 
 
@@ -47,10 +30,27 @@
   {{#autoForm collection="WatchSessions" id="insertWatchSessionFormCustom" type="insert"}}
     <fieldset>
       <legend>Schedule your viewing</legend>
-      {{> afQuickField name='People'}}
-      {{> afQuickField name='Film'}}
-      {{> afQuickField name='Time'}}
+        <div class="col-md-4">
+    <h2>Who</h2>
+        <p>Who do you want to watch with?</p>
+            {{> afQuickField name='People'}}
+    </div>
+        
+       <div class="col-md-4">
+    <h2>What?</h2>
+        <p> Pick your movie!</p>
+                 {{> afQuickField name='Film'}}
+    </div>
+<div class="col-md-4">
+    <h2>When?</h2>
+        <p>When are you going to watch it?</p>
+          {{> afQuickField name='Time' type='datetime-local'}}
+    </div>
+
     </fieldset>
+    <div class="col-md-12">
+    
     <button type="submit" class="btn btn-primary">Insert</button>
+        </div>
   {{/autoForm}}
 </template>
