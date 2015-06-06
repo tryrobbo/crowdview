@@ -32,6 +32,8 @@
 
 
 <template name="insertWatchSessionFormCustom">
+    <div class="container">
+        <p>This is the insertWatchSessionFormCustom template</p>
   {{#autoForm collection="WatchSessions" id="insertWatchSessionFormCustom" type="insert"}}
     <fieldset>
 
@@ -58,8 +60,41 @@
     <button type="submit" class="btn btn-primary">Insert</button>
         </div>
   {{/autoForm}}
+          </div>
 </template>
 
+
+<template name="updateWatchSessionFormCustom">
+        <div class="container">
+
+  {{#autoForm collection="WatchSessions" id="updateWatchSessionFormCustom" doc=this type="update"}}
+    <fieldset>
+
+        <div class="col-md-4">
+    <h2>Who</h2>
+        <p>Who do you want to watch with?</p>
+            {{> afQuickField name='People'}}
+    </div>
+        
+       <div class="col-md-4">
+    <h2>What?</h2>
+        <p> Pick your movie!</p>
+                 {{> afQuickField name='Film'}}
+    </div>
+<div class="col-md-4">
+    <h2>When?</h2>
+        <p>When are you going to watch it?</p>
+          {{> afQuickField name='Time' type='datetime-local'}}
+    </div>
+
+    </fieldset>
+    <div class="col-md-12">
+    
+    <button type="submit" class="btn btn-primary">Insert</button>
+        </div>
+  {{/autoForm}}
+    </div>
+</template>
 
 <template name="listWatchSessions">
     <h1>Your scheduled watching sessions</h1>
@@ -74,11 +109,13 @@
       </thead>
         {{#each WSList}}
         <tr>
-          <th scope="row"><a href="/WS?id={{_id}}">Link</a></th>
+          <th scope="row"><a href="/display/{{_id}}">Link</a></th>
           <td>{{People}}</td>
           <td>{{Film}}</td>
           <td>{{Time}}</td>
         </tr>
 {{/each}}
     </table>
+    
+    
 </template>

@@ -12,8 +12,16 @@ if (Meteor.isClient) {
     Router.route('/', function () {
         this.render('Home');
     });
+    
     Router.route('/showall');
+    
+    Router.route('/display/:_id', {
+        template: 'updateWatchSessionFormCustom',
+        data: function() { return WatchSessions.findOne(this.params._id); }
+});
+    
 }
+    
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
@@ -42,5 +50,5 @@ WatchSessions.attachSchema(new SimpleSchema({
   }
 ));
 
-SimpleSchema.debug = true
+
 
