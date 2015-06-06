@@ -7,29 +7,20 @@
 <div class="container">
    <div id="loginbuttons">{{> loginButtons}}</div>  
     <h1>Crowdview</h1>
+    <h2>Schedule your viewing</h2>
     <div class="row">
     {{> insertWatchSessionFormCustom}}   
     </div>
     
+            {{> listWatchSessions}}
     </div>
 </body>
 
 
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-
-
-<template name="insertWatchSessionForm">
-  {{> quickForm collection="WatchSessions" id="insertWatchSessionForm" type="insert"}}
-</template>
-
 <template name="insertWatchSessionFormCustom">
   {{#autoForm collection="WatchSessions" id="insertWatchSessionFormCustom" type="insert"}}
     <fieldset>
-      <legend>Schedule your viewing</legend>
+
         <div class="col-md-4">
     <h2>Who</h2>
         <p>Who do you want to watch with?</p>
@@ -53,4 +44,26 @@
     <button type="submit" class="btn btn-primary">Insert</button>
         </div>
   {{/autoForm}}
+</template>
+
+
+<template name="listWatchSessions">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Who</th>
+          <th>What</th>
+          <th>When</th>
+        </tr>
+      </thead>
+        {{#each WSList}}
+        <tr>
+          <th scope="row">3</th>
+          <td>{{People}}</td>
+          <td>{{Film}}</td>
+          <td>{{Time}}</td>
+        </tr>
+{{/each}}
+    </table>
 </template>
