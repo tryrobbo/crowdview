@@ -14,7 +14,18 @@ if (Meteor.isClient) {
       Session.set('counter', Session.get('counter') + 1);
     }
   });
-   WatchSessions = new Mongo.Collection("watchSessions");
+   
+
+}
+
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    // code to run on server at startup
+  });
+}
+
+
+WatchSessions = new Mongo.Collection("watchSessions");
 WatchSessions.attachSchema(new SimpleSchema({
   Film: {
     type: String,
@@ -30,15 +41,6 @@ WatchSessions.attachSchema(new SimpleSchema({
     label: "Time",
     min: 0
   },
-
+    
   }
 ));
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-}
-
-
