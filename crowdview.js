@@ -54,6 +54,19 @@ Template.filmsearch.events({
       var json = filmSearch(filmName);
     },
 
+    'click #searchclear':function(event,t) {
+      $("#filmName").val("");
+      $("#filmName").css({
+          background: "white",
+          color: "black",
+        });
+      $("#searchResults").empty();
+
+      var table = "<table class='table'><tbody><tr class='movieRow'><td class='poster poster1'><div style='height:50px;'></div></td><td class='title title1'></td><td class='year year1'></td></tr><tr  class='movieRow'><td class='poster poster2'><div style='height:50px;'></div></td><td class='title title2'></td><td class='year year2'></td></tr><tr  class='movieRow'><td class='poster poster3'><div style='height:50px;'></div></td><td class='title title3'></td><td class='year year3'></td></tr></tbody></table>"
+
+      $("#searchResults").append(table);      
+    },
+
     'click .movieRow':function(event,t) {
       // Select Film
       var movieID = event.target.id;
@@ -73,10 +86,19 @@ Template.filmsearch.events({
 
         html = createMovieCard(data);
 
-        $("#chosenFilm").empty().append(html);
+        // $("#chosenFilm").empty().append(html);
+        $("#searchResults").empty().append(html);
+
+        $("#filmName").val(data.Title);
+        $("#filmName").css({
+          background: "#3FC380",
+          color: "white",
+        });
       });
 
       // $("#chosenFilm").empty().append("Movie ID = " + event.target.id + " Chosen");       
+
+
     },
 
     'click .selectButton':function(event,t){
@@ -112,11 +134,11 @@ var filmSearch = function(filmName) {
 
     if (!json) {
       var error = ":( No results found for '" + filmName + "'";
-      $("#searchResults").empty().append(error);
+      $(".title .tile1").empty().append(error);
       return
     }
-    
-    $("#searchResults").empty().append(parseFilmToHTML(json));
+    parseFilmToHTML(json);
+    // $("#searchResults").empty().append(parseFilmToHTML(json));
   });
 }
 
@@ -124,44 +146,49 @@ var parseFilmToHTML = function(json) {
   var html = "<table class='table table-hover'><tbody>"
 
   var counter = 0;
-  for (var x = 0; counter < 5 && counter < json.length ; x++) {
+  for (var x = 0; counter < 3 && counter < json.length ; x++) {
     if (json[x].Type != "game") {
-      html += "<tr class='movieRow' id='"+ json[x].imdbID +"'>"
-
       console.log("FOR " + json[x]);
       
+      var posterElement = ".poster" + (counter + 1);
+      var titleElement = ".title" + (counter + 1);
+      var yearElement = ".year" + (counter + 1);
+
+      $(posterElement).attr("id",json[x].imdbID);
+      $(titleElement).attr("id",json[x].imdbID);
+      $(yearElement).attr("id",json[x].imdbID);
+
       var url = "http://www.omdbapi.com/?i=" + json[x].imdbID + "&plot=short&r=json";
       
-      $.ajax({
-        type: "POST",
-        url: url,
-        async:false,
-        success: function(data) {
-          if (data.Poster == "N/A") {
-            html += "<td id='"+ json[x].imdbID +"'>" + "<img src='http://a-z-animals.com/media/animals/images/original/hamster3.jpg' style='height:50px;'>" + "</td>";
-          }
-          else {
-            var poster = data.Poster;
-            var jpg = "._SX40_CR0,0,40,54_.jpg";
-            poster = poster.substring(0,poster.length-10);
-            poster += jpg;
-            html += "<td id='"+ json[x].imdbID +"'>" + "<img src='" + poster + "' style='height:50px;'>" + "</td>";  
-          }
-          html += "<td id='"+ json[x].imdbID +"'>" + json[x].Title + "</td>";
-          html += "<th id='"+ json[x].imdbID +"'>" + json[x].Year + "</th>";
-        
-          html += "</tr>"
+      $.post(url, function(data){
+        var poster = data.Poster;
+        if (data.Poster == 'N/A') {
+          poster = "http://a-z-animals.com/media/animals/images/original/hamster3.jpg"
         }
+
+        var posterElementTemp = "#" + data.imdbID + ".poster";
+        var titleElementTemp = "#" + data.imdbID + ".title";
+        var yearElementTemp= "#" + data.imdbID + ".year";
+
+        console.log(posterElementTemp);
+        console.log(titleElementTemp);
+        console.log(yearElementTemp);
+
+        var posterImg = "<img src='" + poster + "'style='height:50px'>";
+        var titleDiv = data.Title;
+        var yearDiv = data.Year;
+
+        $(posterElementTemp).empty().append(posterImg);
+        $(titleElementTemp).empty().append(titleDiv);
+        $(yearElementTemp).empty().append(yearDiv);
+
+        $("table").addClass(" table-hover");
+
       });
 
       counter++;
     }
   }
-
-  html += "</tbody></table>";
-  console.log(html);
-
-  return html
 }
 
 var createMovieCard = function(movie) {
@@ -169,7 +196,7 @@ var createMovieCard = function(movie) {
   if (poster == "N/A") {
     poster = "http://a-z-animals.com/media/animals/images/original/hamster3.jpg";
   }
-  var html = "<div id='filmCard'><div class='row'><div class='col-sm-6'><img style='width:100%' id ='poster' src='" + poster + "' align=left></div><div class='col-sm-6'><div id='title'><h1>" + movie.Title + "<small> (" + movie.Year + ") </small></h1></div><div><b>Rating : </b><span id='imdbRating'>" + movie.imdbRating + "</span></div><div id='genre'><b>Genre : </b>" + movie.Genre + "</div><div id='plot'><b>Plot : </b>" + movie.Plot + "</div><div><button id='" + movie.imdbID + "' class='btn btn-success btn-lg selectButton'>Select</button></div></div></div>"
+  var html = "<div id='filmCard'><div class='row'><div class='col-xs-5'><img class='img-responsive' src='" + poster + "'></div><div class='col-xs-7'><h3>" + movie.Title + "<small> - (" + movie.Year + ")</small></h3><span id='imdbRating'>" + movie.imdbRating + "</span><div id='genre'>Genre : " + movie.Genre + "</div></div></div></div>"
   return html
 }
 
