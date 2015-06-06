@@ -1,121 +1,133 @@
-<head>
-  <title>Gatha.us</title>
-</head>
+    <head>
+      <title>Gatha.us</title>
+    </head>
 
-<body>
-<div class="container">
-   <div id="loginbuttons">{{> loginButtons}}</div>  
-    <h1>Gatha.us</h1>
-    <h2>Schedule your viewing</h2>
+    <body>
+    <div class="container">
+       <div id="loginbuttons">{{> loginButtons}}</div>  
+        <h1>Gatha.us</h1>
+        <h2>Schedule your viewing</h2>
+        <div>
+              <a href="/" class="btn btn-info" role="button">Start a new session</a>
+              <a href="/showall" class="btn btn-info" role="button">Show sessions</a>
+        </div>
+        <div class="row">
+
+        </div>
+
+        </div>
+    </body>
+
+    <template name="Home">
+        <div class="container">
+        {{> insertWatchSessionFormCustom}}   
+        </div>
+    </template>    
+
+
+    <template name="showall">
+            <div class="container">
+        {{> listWatchSessions}}
+        </div>
+    </template>    
+
+    <template name="insertWatchSessionFormCustom">
+        <div class="container">
+      {{#autoForm collection="WatchSessions" id="insertWatchSessionFormCustom" type="insert"}}
+        <fieldset>
+
+            <div class="col-md-4">
+        <h2>Who</h2>
+            <p>Who do you want to watch with?</p>
+                {{> afQuickField name='People'}}
+        </div>
+
+           <div class="col-md-4">
+        <h2>What?</h2>
+            <p> Pick your movie!</p>
+                     {{> afQuickField name='Film'}}
+        </div>
+    <div class="col-md-4">
+        <h2>When?</h2>
+            <p>When are you going to watch it?</p>
+              {{> afQuickField name='Time' type='datetime-local'}}
+        </div>
+
+        </fieldset>
+        <div class="col-md-12">
+
+        <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+      {{/autoForm}}
+              </div>
+    </template>
+
+
+    <template name="updateWatchSessionFormCustom">
+            <div class="container">
+                  {{#autoForm collection="WatchSessions" id="updateWatchSessionFormCustom" doc=this type="update"}}
+        <fieldset>
     <div class="row">
 
-    </div>
-    
-    </div>
-</body>
 
-<template name="Home">
-    <div class="container">
-
-    <p>This is the home template.</p>
-    {{> insertWatchSessionFormCustom}}   
-    </div>
-</template>    
-<template name="showall">
-        <div class="container">
-
-    <p>This is the show all template.</p>
-    {{> listWatchSessions}}
-    </div>
-</template>    
-
-
-
-<template name="insertWatchSessionFormCustom">
-    <div class="container">
-        <p>This is the insertWatchSessionFormCustom template</p>
-  {{#autoForm collection="WatchSessions" id="insertWatchSessionFormCustom" type="insert"}}
-    <fieldset>
-
-        <div class="col-md-4">
-    <h2>Who</h2>
-        <p>Who do you want to watch with?</p>
-            {{> afQuickField name='People'}}
-    </div>
-        
-       <div class="col-md-4">
-    <h2>What?</h2>
-        <p> Pick your movie!</p>
-                 {{> afQuickField name='Film'}}
-    </div>
-<div class="col-md-4">
-    <h2>When?</h2>
-        <p>When are you going to watch it?</p>
-          {{> afQuickField name='Time' type='datetime-local'}}
-    </div>
-
-    </fieldset>
-    <div class="col-md-12">
-    
-    <button type="submit" class="btn btn-primary">Create</button>
+            <div class="col-md-4">
+        <h2>Who</h2>
+            <p>Who do you want to watch with?</p>
+                {{> afQuickField name='People'}}
         </div>
-  {{/autoForm}}
-          </div>
-</template>
 
-
-<template name="updateWatchSessionFormCustom">
-        <div class="container">
-
-  {{#autoForm collection="WatchSessions" id="updateWatchSessionFormCustom" doc=this type="update"}}
-    <fieldset>
-
-        <div class="col-md-4">
-    <h2>Who</h2>
-        <p>Who do you want to watch with?</p>
-            {{> afQuickField name='People'}}
-    </div>
-        
-       <div class="col-md-4">
-    <h2>What?</h2>
-        <p> Pick your movie!</p>
-                 {{> afQuickField name='Film'}}
-    </div>
-<div class="col-md-4">
-    <h2>When?</h2>
-        <p>When are you going to watch it?</p>
-          {{> afQuickField name='Time' type='datetime-local'}}
-    </div>
-
-    </fieldset>
-    <div class="col-md-12">
-    
-    <button type="submit" class="btn btn-primary">Update</button>
+           <div class="col-md-4">
+        <h2>What?</h2>
+            <p> Pick your movie!</p>
+                     {{> afQuickField name='Film'}}
         </div>
-  {{/autoForm}}
-    </div>
-</template>
+    <div class="col-md-4">
+        <h2>When?</h2>
+            <p>When are you going to watch it?</p>
+              {{> afQuickField name='Time' type='datetime-local'}}
+                    </div>
+            </div> </fieldset>
 
-<template name="listWatchSessions">
-    <h1>Your scheduled watching sessions</h1>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>Who</th>
-          <th>What</th>
-          <th>When</th>
-        </tr>
-      </thead>
-        {{#each WSList}}
-        <tr>
-          <th scope="row"><a href="/display/{{_id}}">Link</a></th>
-          <td>{{People}}</td>
-          <td>{{Film}}</td>
-          <td>{{Time}}</td>
-        </tr>
-{{/each}}
-    </table>
-    
-    
-</template>
+
+                <div class="row">
+
+        <div class="col-md-12">
+
+        <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+
+                </div>
+            <div class="row">
+    <div class="col-md-12" id="sharebuttons">
+                {{>shareit}}
+                </div>
+                </div>
+                          {{/autoForm}}
+
+            </div>
+
+    </template>
+
+    <template name="listWatchSessions">
+        <h1>Your scheduled watching sessions</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Who</th>
+              <th>What</th>
+              <th>When</th>
+            </tr>
+          </thead>
+            {{#each WSList}}
+            <tr>
+              <th scope="row"><a href="/display/{{_id}}">Show session</a></th>
+              <td>{{People}}</td>
+              <td>{{Film}}</td>
+              <td>{{Time}}</td>
+            </tr>
+    {{/each}}
+        </table>
+
+
+    </template>

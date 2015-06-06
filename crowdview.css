@@ -8,3 +8,8 @@ body{background-color:whitesmoke}
 
 .container {background-color: lightsteelblue; 
 min-height:100%; }
+
+#sharebuttons{
+    margin-top: 10px;
+    padding-top: 10px;
+}
