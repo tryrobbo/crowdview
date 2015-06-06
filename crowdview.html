@@ -17,9 +17,7 @@
     </body>
 
     <template name="Home">
-        <div class="container">
         {{> insertWatchSessionFormCustom}}   
-        </div>
     </template>    
 
 
@@ -31,9 +29,10 @@
 
     <template name="insertWatchSessionFormCustom">
         <div class="container">
-      {{#autoForm collection="WatchSessions" id="insertWatchSessionFormCustom" type="insert"}}
-        <fieldset>
+             {{#autoForm collection="WatchSessions" id="insertWatchSessionFormCustom" type="insert"}}
+                <fieldset>
 
+      <div class="row">
             <div class="col-md-4">
         <h2>Who</h2>
             <p>Who do you want to watch with?</p>
@@ -50,13 +49,16 @@
             <p>When are you going to watch it?</p>
               {{> afQuickField name='Time' type='datetime-local'}}
         </div>
-
-        </fieldset>
+</div></fieldset>
+             
+   
+            <div class="row">
         <div class="col-md-12">
 
         <button type="submit" class="btn btn-primary">Create</button>
-            </div>
+            </div> </div>
       {{/autoForm}}
+               
               </div>
     </template>
 
