@@ -20,6 +20,18 @@ if (Meteor.isClient) {
         data: function() { return WatchSessions.findOne(this.params._id); }
 });
     
+    
+var hooksObject = {after: {
+    insert: function() {
+        Router.go('/display/'+this.docId );
+    }
+  },    
+ }
+    AutoForm.hooks({
+  insertWatchSessionFormCustom: hooksObject
+});
+    
+    
 }
     
 
