@@ -4,3 +4,7 @@
     left:70%;
     top:0px;
 }
+body{background-color:whitesmoke}
+
+.container {background-color: lightsteelblue; 
+min-height:100%; }

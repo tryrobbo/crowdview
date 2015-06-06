@@ -4,6 +4,9 @@ accounts-oauth@1.1.5
 accounts-password@1.1.1
 accounts-ui@1.1.5
 accounts-ui-unstyled@1.1.7
+aldeed:autoform@5.3.0
+aldeed:collection2@2.3.1
+aldeed:simple-schema@1.1.0
 autopublish@1.0.3
 autoupdate@1.2.1
 base64@1.0.3
@@ -38,6 +41,7 @@ minifiers@1.1.5
 minimongo@1.0.8
 mizzao:bootstrap-3@3.3.1_1
 mobile-status-bar@1.0.3
+momentjs:moment@2.8.4
 mongo@1.1.0
 npm-bcrypt@0.7.8_2
 oauth@1.1.4

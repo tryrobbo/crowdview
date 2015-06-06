@@ -14,6 +14,25 @@ if (Meteor.isClient) {
       Session.set('counter', Session.get('counter') + 1);
     }
   });
+   WatchSessions = new Mongo.Collection("watchSessions");
+WatchSessions.attachSchema(new SimpleSchema({
+  Film: {
+    type: String,
+    label: "Film",
+    max: 200
+  },
+  People: {
+    type: String,
+    label: "People"
+  },
+  Time: {
+    type: String,
+    label: "Time",
+    min: 0
+  },
+
+  }
+));
 }
 
 if (Meteor.isServer) {
@@ -21,3 +40,5 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
+
