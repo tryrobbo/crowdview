@@ -42,7 +42,9 @@
            <div class="col-md-4">
         <h2>What?</h2>
             <p> Pick your movie!</p>
-                     {{> afQuickField name='Film'}}
+                     <!-- {{> afQuickField name='Film'}} -->
+
+              {{> filmsearch}}
         </div>
     <div class="col-md-4">
         <h2>When?</h2>
@@ -134,3 +136,45 @@
 
 
     </template>
+
+    
+<template name='filmsearch'>
+
+	<form id='filmNameForm'>
+		<div class='input-group-lg'>
+			<input class='form-control' id='filmName' type='text' name='text' placeholder='Type Film Name'>
+			<!-- <button class='btn btn-default' type='button' id='filmSearchButton'>Search</button> -->
+	  	</div>
+	  	<div id='searchResults'>
+		</div>
+	</form>
+
+	<div id='chosenFilm'>
+	</div>
+
+	<div id="recommendedFilms">
+		<h1 style="center">Trending</h1>
+		<div class="row" id="row1">
+			<div class="col-xs-4">
+				<img class="img-responsive" src="http://ia.media-imdb.com/images/M/MV5BMTUyMTE0ODcxNF5BMl5BanBnXkFtZTgwODE4NDQzNTE@._V1_SX300.jpg">
+			</div>
+			<div class="col-xs-4">
+				<img class="img-responsive" src="http://ia.media-imdb.com/images/M/MV5BNTgxOTI4NzY2M15BMl5BanBnXkFtZTgwMjY3MTM2NDE@._V1_SX300.jpg">
+			</div>
+			<div class="col-xs-4">
+				<img class="img-responsive" src="http://ia.media-imdb.com/images/M/MV5BMTQ4OTgzNTkwNF5BMl5BanBnXkFtZTgwMzI3MDE3NDE@._V1_SX300.jpg">
+			</div>
+		</div>
+		<div class="row" id="row2">
+			<div class="col-xs-4">
+				<img class="img-responsive" src="http://ia.media-imdb.com/images/M/MV5BNjI4MTgyOTAxOV5BMl5BanBnXkFtZTgwMjQwOTA4NTE@._V1_SX300.jpg">
+			</div>
+			<div class="col-xs-4">
+				<img class="img-responsive" src="http://ia.media-imdb.com/images/M/MV5BMTUxNzc0OTIxMV5BMl5BanBnXkFtZTgwNDI3NzU2NDE@._V1_SX300.jpg">
+			</div>
+			<div class="col-xs-4">
+				<img class="img-responsive" src="http://ia.media-imdb.com/images/M/MV5BMTU4MDU3NDQ5Ml5BMl5BanBnXkFtZTgwOTU5MDUxNTE@._V1_SX300.jpg">
+			</div>
+		</div>
+	</div>
+</template>

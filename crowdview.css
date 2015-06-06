@@ -17,3 +17,33 @@ padding-bottom: 10px;}
     padding-top: 10px;
     margin-bottom: 10px;
 }
+
+#filmCard {
+  	border: solid gray 1px ;
+  	border-radius: 5px;
+  	padding: 10px;
+  }
+  #imdbRating, #titleCard{
+  	width: auto;
+  	background: green;
+  	font-size: 1.5em;
+  	padding: 5px;
+  	padding-left: 10px;
+  	padding-right: 10px;
+  }
+  #genre, #titleCard{
+  	margin-top: 10px;
+  	margin-bottom: 10px;
+  }
+  #plot, #titleCard {
+  	padding-bottom: 30px;
+  }
+  .selectButton, #titleCard{
+  	width: 100%;
+  }
+  #row1 {
+  	padding-top: 20px;
+  }
+  #row2 {
+  	padding-top: 20px;
+  }
