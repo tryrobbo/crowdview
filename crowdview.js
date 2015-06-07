@@ -4,21 +4,21 @@ if (Meteor.isClient) {
 
     
     Template.listWatchSessions.helpers({
-  WSList: function() {
-    return WatchSessions.find();
-  }
-})
-    
-    Router.route('/', function () {
-        this.render('Home');
+      WSList: function() {
+        return WatchSessions.find();
+      }
+    })
+        
+        Router.route('/', function () {
+            this.render('Home');
+        });
+        
+        Router.route('/showall');
+        
+        Router.route('/display/:_id', {
+            template: 'updateWatchSessionFormCustom',
+            data: function() { return WatchSessions.findOne(this.params._id); }
     });
-    
-    Router.route('/showall');
-    
-    Router.route('/display/:_id', {
-        template: 'updateWatchSessionFormCustom',
-        data: function() { return WatchSessions.findOne(this.params._id); }
-});
     
     
 var hooksObject = {after: {
@@ -32,7 +32,9 @@ var hooksObject = {after: {
 });
    
 Template.updateWatchSessionFormCustom.rendered = function(){
-        $('#shareLink').val(window.location);};
+        $('#shareLink').val(window.location);
+        $('[name="Film"]').hide();            
+};
 
 Template.filmsearch.events({
     'submit form':function(event, t) {
@@ -92,10 +94,6 @@ Template.filmsearch.events({
         $("#searchResults").empty().append(html);
 
         $("#filmName").val(data.Title);
-        $("#filmName").css({
-          background: "#3FC380",
-          color: "white",
-        });
         $('[name="Film"]').val("");
         $('[name="Film"]').val(data.Title);
       });
@@ -110,7 +108,96 @@ Template.filmsearch.events({
       }
   });
 
+Template.movieCard.rendered = function(){
+        
+      var movieTitle = $("[name='Film']").val();
+      var url = "http://www.omdbapi.com/?t=" + movieTitle + "&plot=long&r=json";
+      
+      var html = ""
+
+      $.post(url, function(data){
+        if (data.Poster == "N/A") {
+          html += "<img src='http://a-z-animals.com/media/animals/images/original/hamster3.jpg'>"
+        }
+        else {
+          html += "<img src='" + data.Poster + "'>"; 
+        }
+        html += "<h3>" + data.Title + "</h3>";
+        html += "</div>";
+
+        html = createMovieCard(data);
+
+        // $("#chosenFilm").empty().append(html);
+        $("#searchResults").empty().append(html);
+
+        $('[name="Film"]').show();
+
+        $('#filmName').val(movieTitle);
+      });
 }
+
+Template.movieCard.events({
+  'submit form':function(event, t) {
+      event.preventDefault();
+
+      var filmName = t.find('#filmName').value
+      filmName.replace(/\s+/g, '+').toLowerCase();
+
+      var json = filmSearch(filmName);
+    },
+    'click #searchclear':function(event,t) {
+      $("#filmName").val("");
+      $("#filmName").css({
+          background: "white",
+          color: "black",
+        });
+      $("[name='Film']").val("");
+
+      $("#searchResults").empty();
+
+      var table = "<table class='table'><tbody><tr class='movieRow'><td class='poster poster1'><div style='height:50px;'></div></td><td class='title title1'></td><td class='year year1'></td></tr><tr  class='movieRow'><td class='poster poster2'><div style='height:50px;'></div></td><td class='title title2'></td><td class='year year2'></td></tr><tr  class='movieRow'><td class='poster poster3'><div style='height:50px;'></div></td><td class='title title3'></td><td class='year year3'></td></tr></tbody></table>"
+
+      $("#searchResults").append(table);      
+    },
+
+    'click .movieRow':function(event,t) {
+      // Select Film
+      var movieID = event.target.id;
+      var url = "http://www.omdbapi.com/?i=" + movieID + "&plot=long&r=json";
+      
+      var html = "<div class='thumbnail movieCard'>"
+
+      $.post(url, function(data){
+        if (data.Poster == "N/A") {
+          html += "<img src='http://a-z-animals.com/media/animals/images/original/hamster3.jpg'>"
+        }
+        else {
+          html += "<img src='" + data.Poster + "'>"; 
+        }
+        html += "<h3>" + data.Title + "</h3>";
+        html += "</div>";
+
+        html = createMovieCard(data);
+
+        // $("#chosenFilm").empty().append(html);
+        $("#searchResults").empty().append(html);
+
+        $("#filmName").val(data.Title);
+        $("#filmName").css({
+          background: "#3FC380",
+          color: "white",
+        });
+        $('[name="Film"]').val("");
+        $('[name="Film"]').val(data.Title);
+      });
+
+      // $("#chosenFilm").empty().append("Movie ID = " + event.target.id + " Chosen");       
+
+    },
+});
+
+}
+
 
 /***********************************************************************/
 // Search Movies Functions
