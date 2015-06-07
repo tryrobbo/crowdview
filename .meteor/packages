@@ -16,3 +16,5 @@ aldeed:collection2
 iron:router
 mrt:flash-messages
 joshowens:shareit
+mrt:gsap
+johnantoni:meteor-normalize

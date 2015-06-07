@@ -33,6 +33,59 @@ var hooksObject = {after: {
    
 Template.updateWatchSessionFormCustom.rendered = function(){
         $('#shareLink').val(window.location);};
+    
+    
+Template.insertWatchSessionFormCustom.rendered = function(){
+ $('#left').hover(
+				
+  	function () {
+      	TweenLite.to(left, 0.2,{padding:40, ease: Power1.easeOut});
+          	}, 
+				
+    function () {
+      	TweenLite.to(left, 0.5,{padding:0, ease: Expo.easeOut});
+            }
+);
+
+
+
+
+$('#middle').hover(
+				
+  	function () {
+      	TweenLite.to(middle, 0.2,{padding:40, ease: Power1.easeOut});
+          	}, 
+				
+    function () {
+      	TweenLite.to(middle, 0.5,{padding:0, ease: Expo.easeOut});
+            }
+);
+
+$('#right').hover(
+				
+  	function () {
+      	TweenLite.to(right, 0.2,{padding:40, ease: Power1.easeOut});
+          	}, 
+				
+    function () {
+      	TweenLite.to(right, 0.5,{padding:0, ease: Expo.easeOut});
+            }
+);   
+    
+    
+    
+    
+};
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 Template.filmsearch.events({
     'submit form':function(event, t) {
@@ -110,6 +163,8 @@ Template.filmsearch.events({
       }
   });
 
+    
+    
 }
 
 /***********************************************************************/
@@ -231,6 +286,4 @@ WatchSessions.attachSchema(new SimpleSchema({
     
   }
 ));
-
-
 

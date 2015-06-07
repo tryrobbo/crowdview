@@ -68,3 +68,164 @@ input[name='Film'] {
   #row2 {
   	padding-top: 20px;
   }
+
+
+
+
+/* CUSTOM RESET
+--------------------------------------------------- */
+a,img {border: 0;}
+
+h1,h2,h3,h4,h5,h6,p,ul,ol {margin: 0; padding: 0; border: 0;}
+
+img,iframe {display: block;}
+
+img,embed,object,video {max-width: 100%;}
+
+/* CLEARFIX
+-------------------------------------------------- */
+.clearfix:after { 
+  visibility: hidden;
+  display: block;
+  content: ""; 
+  clear: both;
+  height: 0; 
+  width: 0;
+}
+
+/* CSS STARTS HERE
+-------------------------------------------------- */
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
+html {
+  background-color: white;
+}
+
+body {
+  background-color: white;
+  font-size: 62.5%; /* size 10px */
+  line-height: 1.2;
+}
+
+
+/*
+-------------------------------------------------- */
+
+
+h1 {
+  font-size: 3em; /* size ??px */
+  line-height: 1em; /* size ??px */
+  font-family: Open Sans;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.6em; /* size ??px */
+  line-height: 1em; /* size ??px */
+  font-family: Open Sans;
+  color: #662D91;
+  vertical-align: middle;
+}
+
+h3 {
+  font-size: 1.6em; /* size ??px */
+  line-height: 1em; /* size ??px */
+  font-family: Open Sans;
+  color: black;
+  text-align: center;
+  padding-top: 10px;
+}
+
+
+
+
+#logo {
+  margin-left: 3%; 
+  margin-top: 2%; 
+  width: 150px;
+  height:50px;
+  background-color: red;
+  position: fixed;
+}
+
+
+
+.container {
+  width: 100%;
+  height: 780px;
+  background-color: white;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#left {
+  width:300px;
+  height: 550px;
+  background-color: #F0F0F0;
+}
+
+#middle {
+  width:300px;
+  height: 550px;
+  background-color: #F0F0F0;
+}
+
+#right {
+  width:300px;
+  height: 550px;
+  background-color: #F0F0F0;
+}
+
+#title {
+padding-top: 50px;
+}
+
+#lHolder {
+  width: 240px;
+  height: 360px;
+  margin-left: 30px;
+  margin-top: 80px;
+  background-color: red;
+}
+
+#mHolderTop {
+  width: 240px;
+  height: 210px;
+  margin-left: 30px;
+  margin-top: 80px;
+  background-color: red;
+  }
+
+#mHolderBottom {
+  width: 240px;
+  height: 140px;
+  margin-left: 30px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+
+
+#nameEntry {
+  width: 230;
+  height: 30px;
+  background-color: white;
+    margin-bottom: 10px;
+    padding-left: 10px;
+
+}
+
+#calendar {
+  width: 230;
+  height: 250px;
+  background-color: white;
+    margin-bottom: 10px;
+    padding-left: 10px;
+
+}
+

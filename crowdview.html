@@ -3,16 +3,8 @@
     </head>
 
     <body>
-    <div class="container">
-       <div id="loginbuttons">{{> loginButtons}}</div>  
-        <h1>Gatha.us</h1>
-        <h2>Schedule your viewing</h2>
-        <div>
-              <a href="/" class="btn btn-info" role="button">Start a new session</a>
-              <a href="/showall" class="btn btn-info" role="button">Show sessions</a>
-        </div>
-
-
+    <div>
+       <div id="loginbuttons">{{> loginButtons}}</div>
         </div>
     </body>
 
@@ -28,24 +20,24 @@
     </template>    
 
     <template name="insertWatchSessionFormCustom">
-        <div class="container">
+        <div class="container" id="wrapper">
              {{#autoForm collection="WatchSessions" id="insertWatchSessionFormCustom" type="insert"}}
                 <fieldset>
 
-      <div class="row">
-            <div class="col-md-4">
+      <div class="row" >
+            <div id="left" class="clearfix">
         <h2>Who</h2>
             <p>Who do you want to watch with?</p>
                 {{> afQuickField name='People'}}
         </div>
 
-           <div class="col-md-4">
+           <div id="middle" class="clearfix">
         <h2>What?</h2>
             <p> Pick your movie!</p>
 		{{> filmsearch}}
 		{{> afQuickField name='Film'}}
         </div>
-    <div class="col-md-4">
+    <div id="right" class="clearfix">
         <h2>When?</h2>
             <p>When are you going to watch it?</p>
               {{> afQuickField name='Time' type='datetime-local'}}
