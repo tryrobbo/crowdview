@@ -17,9 +17,14 @@ padding-bottom: 10px;}
     padding-top: 10px;
     margin-bottom: 10px;
 }
+
+input[name='Film'] {
+	visibility: hidden;
+}
 #filmNameInput {
 	width: 100%;
 }
+
 #searchclear {
     position: absolute;
     right: 5px;

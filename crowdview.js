@@ -60,6 +60,8 @@ Template.filmsearch.events({
           background: "white",
           color: "black",
         });
+      $("[name='Film']").val("");
+
       $("#searchResults").empty();
 
       var table = "<table class='table'><tbody><tr class='movieRow'><td class='poster poster1'><div style='height:50px;'></div></td><td class='title title1'></td><td class='year year1'></td></tr><tr  class='movieRow'><td class='poster poster2'><div style='height:50px;'></div></td><td class='title title2'></td><td class='year year2'></td></tr><tr  class='movieRow'><td class='poster poster3'><div style='height:50px;'></div></td><td class='title title3'></td><td class='year year3'></td></tr></tbody></table>"
@@ -94,10 +96,11 @@ Template.filmsearch.events({
           background: "#3FC380",
           color: "white",
         });
+        $('[name="Film"]').val("");
+        $('[name="Film"]').val(data.Title);
       });
 
       // $("#chosenFilm").empty().append("Movie ID = " + event.target.id + " Chosen");       
-
 
     },
 
