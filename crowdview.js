@@ -94,6 +94,10 @@ Template.filmsearch.events({
         $("#searchResults").empty().append(html);
 
         $("#filmName").val(data.Title);
+        $("#filmName").css({
+          background: "#3FC380",
+          color: "white",
+        });
         $('[name="Film"]').val("");
         $('[name="Film"]').val(data.Title);
       });
