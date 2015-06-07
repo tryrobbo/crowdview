@@ -75,12 +75,14 @@ Template.filmsearch.events({
       // Select Film
       var movieID = event.target.id;
       var url = "http://www.omdbapi.com/?i=" + movieID + "&plot=long&r=json";
-      
+          
       var html = "<div class='thumbnail movieCard'>"
 
       $.post(url, function(data){
-        if (data.Poster == "N/A") {
-          html += "<img src='http://a-z-animals.com/media/animals/images/original/hamster3.jpg'>"
+        var imgUrl = "http://www.imhclille2015.com/images/notAvailable.jpg";
+        if (data.Poster == "N/A" || true) {
+          // html += "<img src='http://a-z-animals.com/media/animals/images/original/hamster3.jpg'>"
+          html += "<img src='"+ imgUrl + "'>"
         }
         else {
           html += "<img src='" + data.Poster + "'>"; 
@@ -260,6 +262,9 @@ var parseFilmToHTML = function(json) {
           poster = "http://a-z-animals.com/media/animals/images/original/hamster3.jpg"
         }
 
+
+        poster = "http://www.imhclille2015.com/images/notAvailable.jpg";
+
         var posterElementTemp = "#" + data.imdbID + ".poster";
         var titleElementTemp = "#" + data.imdbID + ".title";
         var yearElementTemp= "#" + data.imdbID + ".year";
@@ -290,6 +295,9 @@ var createMovieCard = function(movie) {
   if (poster == "N/A") {
     poster = "http://a-z-animals.com/media/animals/images/original/hamster3.jpg";
   }
+  
+  poster = "http://www.imhclille2015.com/images/notAvailable.jpg";
+  
   var html = "<div id='filmCard'><div class='row'><div class='col-xs-5'><img class='img-responsive' src='" + poster + "'></div><div class='col-xs-7'><h3>" + movie.Title + "<small> - (" + movie.Year + ")</small></h3><span id='imdbRating'>" + movie.imdbRating + "</span><div id='genre'>Genre : " + movie.Genre + "</div></div></div></div>"
   return html
 }
